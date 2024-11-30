@@ -148,8 +148,8 @@ bool BaseDeconvolutionAlgorithm::postprocess(double epsilon){
     }
 
     for (auto& slice : this->mergedVolume) {
-        cv::threshold(slice, slice, epsilon, 0.0, cv::THRESH_TOZERO); // Werte unter 0 auf 0 setzen
         slice.convertTo(slice, CV_32F, 1.0 / (global_max_val - global_min_val), -global_min_val * (1 / (global_max_val - global_min_val)));  // Add epsilon to avoid division by zero
+        cv::threshold(slice, slice, epsilon, 0.0, cv::THRESH_TOZERO);
     }
 
     return true;
@@ -199,19 +199,13 @@ Hyperstack BaseDeconvolutionAlgorithm::deconvolve(Hyperstack &data, PSF &psf) {
         }
 
         // Parallelization of grid for
-    // Using static scheduling because the execution time for each iteration is similar, which reduces overhead costs by minimizing task assignment.
+        // Using static scheduling because the execution time for each iteration is similar(or the same size), which reduces overhead costs by minimizing task assignment.
 #pragma omp parallel for schedule(static) shared(gridImages, cubeVolume, paddedH, totalGridNum, cubeWidth, cubeHeight, cubeDepth)
         for (size_t i = 0; i < this->gridImages.size(); ++i) {
-            // PSF
-            // H points to an existing PSF (paddedH or paddedH_2) and should not be freed here as it is not allocated with fftw_malloc.
-            fftw_complex* H = nullptr;
             // Observed image
             fftw_complex* g = (fftw_complex *) fftw_malloc(sizeof(fftw_complex) * this->cubeVolume);
             // Result image
             fftw_complex* f = (fftw_complex *) fftw_malloc(sizeof(fftw_complex) * this->cubeVolume);
-
-
-            H = this->paddedH;
 
             // Convert image to fftcomplex
             UtlFFT::convertCVMatVectorToFFTWComplex(this->gridImages[i], g, this->cubeWidth, this->cubeHeight, this->cubeDepth);
@@ -219,7 +213,7 @@ Hyperstack BaseDeconvolutionAlgorithm::deconvolve(Hyperstack &data, PSF &psf) {
             std::cout << "\r[STATUS] Channel: " << channel_z + 1 << "/" << data.channels.size() << " GridImage: "
                       << this->totalGridNum << "/" << this->gridImages.size() << " ";
             // Methode overridden in specific algorithm class
-            algorithm(data, channel_z, H, g, f);
+            algorithm(data, channel_z, this->paddedH, g, f);
 
             // Convert the result FFTW complex array back to OpenCV Mat vector
             UtlFFT::convertFFTWComplexToCVMatVector(f, this->gridImages[i], this->cubeWidth, this->cubeHeight, this->cubeDepth);

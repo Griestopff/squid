@@ -27,7 +27,7 @@ protected:
     std::vector<cv::Mat> mergedVolume;
     std::vector<std::vector<cv::Mat>> gridImages;
     fftw_plan forwardPlan, backwardPlan = nullptr;
-    fftw_complex *paddedH, *paddedH_2, *fftwPlanMem = nullptr;
+    fftw_complex *paddedH, *fftwPlanMem = nullptr;
 
     // Image info
     int originalImageWidth, originalImageHeight, originalImageDepth;
