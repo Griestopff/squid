@@ -17,4 +17,3 @@ uml3.puml
 !input/.gitkeep
 !result/.gitkeep
 !build/.gitkeep
-!cmake-build-debug/.gitkeep

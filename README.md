@@ -37,24 +37,24 @@ To compile the project, make sure all dependencies are installed and linked corr
 
 #### Command-Line Options
 
-| Option                 | Description                                                                                     | Default     |
-|------------------------|-------------------------------------------------------------------------------------------------|-------------|
-| `-i, --image`          | Path to input image (required).                                                                 |             |
-| `-p, --psf`            | Path to PSF file or 'gauss' for synthetic PSF generation.                                       | "gauss"     |
-| `-a, --algorithm`      | Deconvolution algorithm: 'rl' (Richardson-Lucy) or 'rltv' (RL with Total Variation).            | "rl"        |
-| `--psfx`, `--psfy`, `--psfz` | PSF dimensions (width, height, depth) for synthetic PSF.                           | 20, 20, 40  |
+| Option                 | Description                                                                                     | Default       |
+|------------------------|-------------------------------------------------------------------------------------------------|---------------|
+| `-i, --image`          | Path to input image (required).                                                                 |               |
+| `-p, --psf`            | Path to PSF file or 'gauss' for synthetic PSF generation.                                       | "gauss"       |
+| `-a, --algorithm`      | Deconvolution algorithm: 'rl' (Richardson-Lucy) or 'rltv' (RL with Total Variation).            | "rl"          |
+| `--psfx`, `--psfy`, `--psfz` | PSF dimensions (width, height, depth) for synthetic PSF.                           | 20, 20, 40    |
 | `--sigmax`, `--sigmay`, `--sigmaz` | Gaussian sigma values for synthetic PSF (x, y, z).                        | 5.0, 5.0, 5.0 |
-| `--epsilon`            | Epsilon value for complex division.                                                             | 1e-6        |
-| `--iterations`         | Number of iterations for the deconvolution algorithm.                                           | 10          |
-| `--lambda`             | Regularization parameter for RLTV.                                                              | 0.01        |
-| `--borderType`         | Border extension type (0: constant, 1: replicate, 2: reflect).                                  | 2           |
-| `--psfSafetyBorder`    | Padding around the PSF.                                                                        | 10          |
-| `--cubeSize`           | Edge length for sub-image grid (0 for auto-fit to PSF).                                        | 0           |
-| `--savepsf`            | Save the generated PSF as a TIFF file.                                                          |             |
-| `--time`               | Display algorithm duration.                                                                     |             |
-| `--separate`           | Save each layer as a separate TIFF file in a directory.                                        |             |
-| `--info`               | Display metadata of the input image.                                                            |             |
-| `--showExampleLayers`  | Show example layers of the loaded image and PSF.                                                |             |
+| `--epsilon`            | Epsilon value for complex division.                                                             | 1e-6          |
+| `--iterations`         | Number of iterations for the deconvolution algorithm.                                           | 10            |
+| `--lambda`             | Regularization parameter for RLTV.                                                              | 0.01          |
+| `--borderType`         | Border extension type (0: constant, 1: replicate, 2: reflect).                                  | 2             |
+| `--psfSafetyBorder`    | Padding around the PSF.                                                                        | 10            |
+| `--cubeSize`           | Edge length for sub-image grid (0 for auto-fit to PSF).                                        | 0             |
+| `--savepsf`            | Save the generated PSF as a TIFF file.                                                          | false         |
+| `--time`               | Display algorithm duration.                                                                     | false         |
+| `--separate`           | Save each layer as a separate TIFF file in a directory.                                        | false         |
+| `--info`               | Display metadata of the input image.                                                            | false         |
+| `--showExampleLayers`  | Show example layers of the loaded image and PSF.                                                | false         |
 
 ### Configuration via JSON File
 
