@@ -103,7 +103,6 @@ bool BaseDeconvolutionAlgorithm::preprocess(Channel& channel, PSF& psf) {
         fftw_complex *h = (fftw_complex *) fftw_malloc(sizeof(fftw_complex) * originPsfVolume);
         UtlFFT::convertCVMatVectorToFFTWComplex(psf.image.slices, h, originPsfWidth, originPsfHeight, originPsfDepth);
         fftw_execute_dft(forwardPSFPlan, h, h);
-        UtlFFT::octantFourierShift(h, originPsfWidth, originPsfHeight, originPsfDepth);
 
         std::cout << "[STATUS] Padding PSF..." << std::endl;
         // Pad the PSF to the size of the image
@@ -137,11 +136,6 @@ bool BaseDeconvolutionAlgorithm::postprocess(double epsilon){
     this->mergedVolume = UtlGrid::mergeCubes(this->gridImages, this->originalImageWidth, this->originalImageHeight, this->originalImageDepth, this->cubeSize);
     std::cout << "[INFO] Image size: " << this->mergedVolume[0].rows << "x" << this->mergedVolume[0].cols << "x" << this->mergedVolume.size()<< std::endl;
 
-
-    for (auto& slice : this->mergedVolume) {
-        cv::threshold(slice, slice, epsilon, 0.0, cv::THRESH_TOZERO); // Werte unter 0 auf 0 setzen
-    }
-
     // Global normalization of the merged volume
     double global_max_val= 0.0;
     double global_min_val = MAXFLOAT;
@@ -154,6 +148,7 @@ bool BaseDeconvolutionAlgorithm::postprocess(double epsilon){
     }
 
     for (auto& slice : this->mergedVolume) {
+        cv::threshold(slice, slice, epsilon, 0.0, cv::THRESH_TOZERO); // Werte unter 0 auf 0 setzen
         slice.convertTo(slice, CV_32F, 1.0 / (global_max_val - global_min_val), -global_min_val * (1 / (global_max_val - global_min_val)));  // Add epsilon to avoid division by zero
     }
 
