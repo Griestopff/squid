@@ -1,0 +1,25 @@
+{
+  "image_path": "../input/bacteria.tif",
+  "info": true,
+  "showExampleLayers": true,
+  "time": true,
+  "seperate": false,
+
+  "algorithm": "rl",
+  "epsilon": 1e-6,
+  "lambda": 0.015,
+  "iterations": 10,
+
+  "psf_path": "gauss",
+  "savePsf": true,
+  "psfx": 20,
+  "psfy": 20,
+  "psfz": 46,
+  "sigmax": 5,
+  "sigmay": 5,
+  "sigmaz": 5,
+
+  "borderType": 2,
+  "cubeSize": 0,
+  "psfSafetyBorder": 10
+}

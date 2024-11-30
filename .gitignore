@@ -1,0 +1,20 @@
+result/*
+build/*
+cmake-build-debug/*
+input/*
+
+uml.puml
+uml2.puml
+uml3.puml
+
+# Stelle sicher, dass das Verzeichnis input nicht ignoriert wird
+!input/
+!result/
+!build/
+!cmake-build-debug/
+
+# Erlaube eine .gitignore-Datei im Verzeichnis input (optional, falls du .gitignore im Verzeichnis haben möchtest)
+!input/.gitkeep
+!result/.gitkeep
+!build/.gitkeep
+!cmake-build-debug/.gitkeep
