@@ -17,4 +17,6 @@ uml3.puml
 !input/.gitkeep
 !result/.gitkeep
 !build/.gitkeep
-!input/.convolved.tif
+!input/convolved.tif
+!input/psf.tif
+!input/origin.tif
