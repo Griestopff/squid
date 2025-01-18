@@ -39,7 +39,7 @@ make
 #### Basic Usage
 
 ```
-./SQUID -i <input_image_path> -p <psf_path> -c <config_file_path> [OPTIONS]
+./SQUID -i <input_image_path> -p <psf_path> [OPTIONS]
 ```
 
 #### Command-Line Options
@@ -62,6 +62,7 @@ make
 | `--separate`           | Save each layer as a separate TIFF file in a directory.                                        | false         |
 | `--info`               | Display metadata of the input image.                                                            | false         |
 | `--showExampleLayers`  | Show example layers of the loaded image and PSF.                                                | false         |
+| `-c, --config`  | Using configuration file.                                                | false         |
 
 ### Configuration via JSON File
 
@@ -93,6 +94,9 @@ Configuration can also be loaded from a JSON file, with parameters specified as 
 ```
 
 To use a configuration file, specify it with the `-c` or `--config` option. Command-line arguments override any settings specified in the configuration file.
+```
+./SQUID -c <config_file_path> [OPTIONS]
+```
 
 ### Example Command
 
