@@ -1,0 +1,25 @@
+Number of Threads
+Observations:
+- the speedup values for both algorithms increase with thread count, indicating parallelization benefits
+- min_max_quicksort maintains a slightly higher execution time than __gnu_parallel::sort across all thread counts
+- __gnu_parallel::sort consistently achieves higher speedup than min_max_quicksort
+- initially, both algorithms benefit significantly from additional threads, with time reductions becoming less dramatic beyond 8 threads
+- after around 8 threads, speedup gains for both algorithms diminish, likely due to increased overhead in managing threads and synchronizing data
+
+Explanation:
+- __gnu_parallel::sort may have optimizations better suited for multi-threading, explaining its higher speedup
+- increased threads might lead to reduced returns due to the overhead associated with thread management and memory access -> after a certain number of threads, the overhead of scheduling and synchronization becomes more prominent, especially if the workload for each thread becomes too small
+- memory bandwidth and cache contention may limit the efficiency of both algorithms at high thread counts
+
+---------------------------------------------------------
+Array Size
+Observations:
+- for small sizes (10e3 elements), the speedup is low, with both algorithms struggling to reach even 0.2x of the baseline
+- for medium sizes (10e4 to 10e7 elements), min_max_quicksort achieves a speedup of around 3x, while __gnu_parallel::sort reaches around 7.5x -> after 10e8 the speedup gains decrease slightly but remain higher for __gnu_parallel::sort than for min_max_quicksort
+- __gnu_parallel::sort scales better with size, achieving higher speedup as array size increases and retaining greater performance even with very large arrays
+
+Explanation:
+- for smaller data parallel algorithms have to deal with thread management and syncro, the single threaded std::sort not
+- min_max_quicksort, with its additional partitioning and min-max boundary tracking, might not make optimal use of cache, especially as size increases, leading to lower speedup
+- min_max_quicksort may have more overhead from task management with than __gnu_parallel::sort
+

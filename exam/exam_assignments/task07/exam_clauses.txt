@@ -1,0 +1,5 @@
+1. aligned: specifies that specific pointers or arrays are aligned in memory, which enables the compiler to generate efficient vectorized instructions that rely on memory alignment
+
+2. reduction: specifies a reduction operation for variables, which enables correct parallel aggregation of values across vectorized iterations
+
+3. safelen: limits the maximum number of iterations that can be processed concurrently in a vectorized manner. this ensures no vector length dependencies cause incorrect results

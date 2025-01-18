@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;">
     <img src="icon.png" alt="Whale Icon" width="60" height="60" style="margin-right: 10px;">
-    <h1>SQUID - Super Quick Image Deconvolution v1.0.0</h1>
+    <h1>SQUID - Super Quick Image Deconvolution v1.0.1</h1>
 </div>
 
 SQUID is a compact high-performance 3D image deconvolution tool designed for processing large microscopy datasets with customized Point Spread Functions (PSFs) and algorithms like Richardson-Lucy deconvolution (RL) and RL with Total Variation (RLTV). The tool allows a quick and easy application. It supports various configurations for generating or loading PSFs and provides flexible options for enhancing image quality through deconvolution.

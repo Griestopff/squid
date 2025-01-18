@@ -1,0 +1,8 @@
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/CMakeFiles/fizzbuzz_test.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/CMakeFiles/rebuild_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/lib/fizzbuzz/CMakeFiles/fizzbuzz.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/lib/fizzbuzz/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/lib/fizzbuzz/CMakeFiles/rebuild_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/lib/catch/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/exam2/build/lib/catch/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,9 @@
+In Listing 3.1, threads are created independently and simultaneously, by execution of #pragma omp parallel. Each thread does the print task as soon as "it is ready", because it is a concurrent execution of the threads. This results in an non-deterministic order of the output.
+
+In Listing 3.2, the threads are created independently and simultaneously too, but the execution time differs for each thread. Because Fibonacci calculations are recursive and grow in computational complexity with larger values of n (n+t), threads with smaller t values finish their task sooner than threads with larger t values. As in Lisiting 3.1 each thread prints the output as "it is ready". Thats why the output appears as a ordered or syncronized output ... because the threads with lower t have a lower runtime.
+
+
+
+No it does not use the cores eﬃciently, because of the creation of the parallel region in te while loop. If the size variable is not "so big", than the tasks of the for loops are very quick and the opening, closing and syncronizing of the threads per while loop leads to more overhead than the code benefit from.
+The bigger the size is the more data have to be syncronized after each generation. 
+Always two iteration  have only edge cells to update, which have a lower cost than inner cells, because of the reduces neigboors. The bigger the size the bigger are these iterations which can lead to an imbalance workload with a static scheduler. Also certain patterns in te grid can lead to an unefficient balancing.

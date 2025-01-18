@@ -56,7 +56,7 @@ void UtlFFT::complexMultiplication(fftw_complex* a, fftw_complex* b, fftw_comple
 void UtlFFT::complexMultiplicationWithConjugate(fftw_complex* a, fftw_complex* b, fftw_complex* result, int size) {
     // Ensure that input pointers are not null
     if (!a || !b || !result) {
-        std::cerr << "Error: Null pointer passed to complexMultiplicationWithConjugate." << std::endl;
+        //std::cerr << "Error: Null pointer passed to complexMultiplicationWithConjugate." << std::endl;
         return;
     }
 
@@ -289,7 +289,7 @@ void UtlFFT::gradientY(fftw_complex* image, fftw_complex* gradY, int width, int 
     // Parallelize the loops using OpenMP for better performance.
 //#pragma omp parallel for collapse(3)
     for (int z = 0; z < depth; ++z) {
-        for (int y = 0; y < height - 1; ++y) {
+        for (int y = 0; y < height - 1; ++y) {  // y < height - 1 to avoid overflow
             for (int x = 0; x < width; ++x) {
                 // Calculate the linear index for the 3D array.
                 int index = z * height * width + y * width + x;
@@ -299,9 +299,11 @@ void UtlFFT::gradientY(fftw_complex* image, fftw_complex* gradY, int width, int 
                 gradY[index][0] = image[index][0] - image[nextIndex][0]; // Real part
                 gradY[index][1] = image[index][1] - image[nextIndex][1]; // Imaginary part
             }
+        }
 
-            // Handle the boundary condition at the last y position.
-            int lastIndex = z * height * width + (height - 1) * width + (width - 1);
+        // Handle the boundary condition at the last y position (y == height - 1).
+        for (int x = 0; x < width; ++x) {
+            int lastIndex = z * height * width + (height - 1) * width + x;
             gradY[lastIndex][0] = 0.0; // Set the derivative to zero or another suitable boundary condition.
             gradY[lastIndex][1] = 0.0;
         }

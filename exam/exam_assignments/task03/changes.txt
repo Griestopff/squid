@@ -1,0 +1,8 @@
+Change #1
+simple random number function rnd. 
+The complexe random number engine creates more overhead, because every thread need its own instance, because every tread need its own seed and it is not thread safe using globally.
+And the calculation with the rnd function is much faster than the other.
+
+Change #2 
+reduction(counter) instead of atomic region.
+This gives each thread a local copy of counter, which will snycronized at the end of the parallel region. With th atomic region threads had to wait for another thread to write on counter, which brings the concurrent execution of all thread to a halt. The reduction allows each thread to "run for itself", without waiting of another to finish a task.

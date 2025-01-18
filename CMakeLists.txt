@@ -20,6 +20,7 @@ link_directories(/usr/local/lib)
 # Finden Sie OpenMP
 find_package(OpenMP REQUIRED)
 
+
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${TIFF_INCLUDE_DIR})
@@ -71,4 +72,27 @@ target_link_libraries(squid
         ${TIFF_LIBRARIES}
 )
 
+# Testziel für Catch2 erstellen
+add_executable(tests
+        tests/UtlFFT_tests.cpp
+        src/utilities/UtlFFT.cpp
+        tests/UtlImage_tests.cpp
+        src/utilities/UtlImage.cpp
 
+)
+include_directories(${CMAKE_SOURCE_DIR}/lib/catch2/include)
+target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(tests
+        fftw3
+        fftw3_threads
+        -lpthread
+        -lgomp
+        stdc++fs
+        OpenMP::OpenMP_CXX
+        ${OpenCV_LIBS}
+        ${TIFF_LIBRARIES}
+)
+# Catch2 und deine Bibliothek verlinken
+# Testziel aktivieren
+enable_testing()
+add_test(NAME UnitTests COMMAND tests)

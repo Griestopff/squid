@@ -1,0 +1,43 @@
+Bandwidth-bound computations are slowed down because the system takes too long to move data between memory and the processor.
+Compute-bound computations are slowed down because the processor takes too long to do the math or calculations.
+
+Temporal locality means a program accesses the same data repeatedly in a short time. By keeping this data in a fast-access memory (like a cache), the program avoids slower memory access, improving speed.
+Spatial locality means a program accesses data stored close together in memory. By fetching nearby data into the cache, the program reduces the number of slow memory accesses when processing adjacent data.
+
+Topic from slide: Memory Mountain
+-> created Memory Mountain of own system (see dir memory-mountain-master)
+-> exec "make plot" in dir for your Memory Mountain (see memory_mountain.png for mine)
+
+Paper:
+Memory limitations in AI can be a big challenge because AI often deals with large amounts of data. Here's an easy breakdown of the key points:
+1. Early AI Systems and Memory Issues:
+Early AI systems were limited by how much memory they had. The computers of the past couldn’t handle large problems because their memory was too small, which made it hard for these systems to scale up and solve more complex tasks.
+
+2. How Memory Works in AI:
+Modern computers have different levels of memory:
+- Registers are super fast but tiny.
+- Caches (L1, L2, L3) are a little slower but still much faster than regular memory.
+- Main memory (RAM) is slower but holds more data.
+- Secondary memory (like hard drives or SSDs) is the slowest but holds a lot of data.
+AI systems use these different types of memory to store and access data. The faster the access, the better the AI system performs.
+
+3. When Memory Gets Too Small:
+When AI tasks are too large for the available memory, they use secondary memory (like hard drives). This can slow down the system because accessing data from a hard drive takes much longer than from RAM. To manage this, AI systems use special external memory algorithms that try to reduce the number of times data has to be fetched from slower storage.
+
+4. Performance Trade-Offs:
+AI algorithms often face a choice between using more memory or taking more time. If memory is limited, the algorithm may try to use less memory and perform tasks more slowly, or it might need to reprocess information if it’s not available in memory.
+
+5. Optimizing Memory:
+To overcome memory limitations, AI systems use strategies like:
+- Heuristic search: This helps the system make smarter decisions about where to search to save memory.
+- State-space representations: This is a way of organizing the problem so that it uses less memory.
+- Recomputing results only when necessary to save space.
+
+6. Problems with Graphs:
+In some AI tasks, like finding the shortest path or solving puzzles, the data can be represented as a graph (a bunch of points connected by lines). If the graph is too large to fit in memory, the system may need to repeatedly access external storage, which slows things down.
+
+7. Memory in Game Playing and Puzzles:
+In games like chess or puzzles like the Rubik's Cube, AI needs to search through a lot of possible moves. The memory limitations can affect how deeply the AI can explore different options. To manage this, AI systems use efficient algorithms that balance memory use and search depth.
+
+
+In short, memory limitations are a big challenge for AI, especially as problems get larger and more complex. AI systems need to use memory wisely, relying on smart algorithms to make the best use of available memory and avoid slowing down too much.

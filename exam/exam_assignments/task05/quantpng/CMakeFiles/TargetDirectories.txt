@@ -1,0 +1,9 @@
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/CMakeFiles/quantpng.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/CMakeFiles/rebuild_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/lodepng/CMakeFiles/lodepng.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/lodepng/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/lodepng/CMakeFiles/rebuild_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/quantize/CMakeFiles/quantize.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/quantize/CMakeFiles/edit_cache.dir
+/home/christoph/Dokumente/Studium/Semester_5/algo_eng/05/task05/quantpng/libs/quantize/CMakeFiles/rebuild_cache.dir

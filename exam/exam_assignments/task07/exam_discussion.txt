@@ -1,0 +1,21 @@
+1. Integration with existing Floating-Point Registers
+
+One of the remarkable feats in the engineering of MMX is reusing the existing floating-point registers in every Intel processor for storing 64-bit MMX data. This allows backward compatibility with all existing software and OS, without requiring any amendment in the system architecture.
+
+No New State: By mapping the 64-bit MMX registers over the existing 80-bit floating-point registers, Intel avoided introducing a new architectural mode or state. This made MMX technology seamless for developers and operating systems.
+
+Efficiency of Task Switching: Because the MMX data is stored in floating-point registers, for multitasking, a context switch does not require special handling.
+
+This reuse allowed Intel to provide MMX without much disruption to the software environment that is.
+
+2. Saturation Arithmetic
+
+Another interesting characteristic is the utilization of saturation arithmetic instead of wrap-around integer arithmetic. This makes sure that operations such as the addition or subtraction of pixels will not overflow and yield values out of the desired range. Example:
+
+Adding two medium-blue pixels, for instance, may yield an incorrect light blue color with wrap-around arithmetic, while saturation arithmetic clamps the result to the maximum value possible to maintain visual integrity.
+
+This is particularly important for applications like Gouraud shading in the context of 3-D graphics, where interpolation over colors across a polygon can give overflows. The saturated arithmetic allows smooth gradients without having jumps in faulty manners. This is also important in video compression applications when one computes the differences of pixels to decrease the data size. MMX supports both saturated subtraction and logical operations to perform such operations efficiently in parallel.
+
+Both of these features underpin the MMX approach to enhancing multimedia application performance on the PC without compromising compatibility with existing software.
+
+

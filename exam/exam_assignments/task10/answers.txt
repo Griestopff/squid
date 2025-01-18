@@ -1,0 +1,39 @@
+QUOTE
+The quote emphasizies the danger of over priotizing omptimization of noncritical areas of code, and highlighting the importance of optimizing ("the 3%") critical bottlenecks. A big task is to identifie these 3% critical areas. Knuths opinion is that just by looking at code, developers often spend too much time at noncrticial areas and overlook the important parts. Thats why it is necessary for him to include profiler into developing processes or integrate profile directly into the compiler.
+The concentration on too many optimizations in a programm lead to counterproductive outcomes and lead too "complicated" code, that is not necessary for the performance. I support this argument, because I am also a big fan of the KISS principle (Keep it simple, stupid (and short)). The most complicated version isnt always the best. I prefer simple and functional code over optimized code which is 5% faster, but no other developer will ever understand the code under 1 year of reading it. It is important that our code is fast AND understandable for other developers. Because if others cant read our code and need this specific or some type of this problem solved, it leads to simple reduction of our code, also if it doenst fit to their actual problem. The code is just not reusable friendly for example.
+So why waste time in aggressive optimization where it is not needed, instead of this use the time to highly optimize the real ("3%") critical parts. And because these parts are often not easy to see Knuths advice is to use profilers. I agree with this, for advanced developers. To reduce the time of searching for critical areas profilers are crucial, because the optimization process can be highly optimizied ;) but profilers rely on a skillful application too. Thats why I like the suggestion to integrate profilers in the compilers. A compiler that automatically shows where are the critical section in my code would make a lot easy and faster.
+However, developers must remain to watch out about their algorithmic efficiency, as no compiler can fix fundamentally poor design.
+
+
+
+JACOBI METHOD
+The Jacobi Method is a numerical technique used to solve systems of linear equations. The method updates the value of each unknown by assuming all other values are fixed and iterating this process until the solution stabilizes. The Jacobi Method is used to solve linear systems, especially when:
+- The matrix A is diagonally dominant (the diagonal elements are larger than the sum of other row elements)
+- The system is too large for direct methods like Gaussian elimination
+
+Applications
+- Engineering: Used in structural and thermal analysis
+- Physics: Helps in solving partial differential equations (PDEs)
+- Image Processing: Applied in noise reduction and deblurring
+- Computational Science: Solves systems in fluid dynamics and electromagnetics
+
+Why is it Fast?
+The Jacobi Method is fast because:
+1. It can handle large and sparse systems efficiently
+2. The calculations for each variable can be done in parallel, which speeds up computations on modern multi-core processors
+
+Limitations:
+- Convergence can be slow
+- Requires a good starting guess and a diagonally dominant matrix
+
+Sources
+- Golub, G. H., & Van Loan, C. F. (2013). Matrix Computations
+- Greenbaum, A., & Chartier, T. P. (2012). Numerical Methods
+- Wikipedia: (https://en.wikipedia.org/wiki/Jacobi_method)
+
+
+
+Debugging With cout Is a Valid Alternative
+I use cout instead of debuggers too. It always was to much effort to become familiar with debuggers compared to quickly solving it by using print outputs. And if I have no bug to solve I think it is not necessary to spend the time to learn the debugging with a debugger, because I have to spend the time for coding. And every time I do this, I have to really dive deep into my code and the logic. Either the problem is solved very quick with this method or I spend hours at trying and lookin at my code, but in this time I understand every aspect of the code I wrote there and maybe see other problems and improve them. This would not be the case if I use a debugger.
+From my point of view, only a few people really use debuggers. I dont know one person who uses them really for "daily life coding".
+ 

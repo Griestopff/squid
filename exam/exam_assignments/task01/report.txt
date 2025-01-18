@@ -1,0 +1,41 @@
+Report on Pi:
+Pi can approximated in a lot of ways but never calculated exactly. 
+There are several equivalent approaches to defining the circle number. Archimedes already proved that the first and second definitions define the same number (compare the area of ​​a circle):
+So, the first definition in geometry is based on the proportionality of the circumference and diameter of a circle. Accordingly, the circle number can be defined as the ratio of the circumference to the diameter of the circle. The circle number therefore corresponds to the quotient and proportionality factor π = U/d.
+The second geometric approach is based on comparing the area A of a circle with the area of ​​the square over its radius, i.e. half its diameter. For reasons of similarity, these two areas are also proportional. Accordingly, the circle number pi can be defined as the quotient or the proportionality factor pi = A/r^2. (a circular area relates to the surrounding square area as pi : 4)
+In analysis, one often proceeds by first defining the real cosine function cos(x) via its Taylor series and then the circle number as twice the smallest positive zero of the cosine to set.
+I found a youtube channel with a playlist, where pi is calculated/approximated in different(funny) ways!:
+https://www.youtube.com/playlist?list=PLhtC92GarkjyYbxI3-4qzIWIRbZaw4wuP
+
+
+Additionally:
+Compiler flags are parameter provided to a compiler that influence its "behavior" durig compilation. They are flags for runtime optimization and debugging, for example. Flag variable is used as a signal in programming to let the program know that a certain condition has met. It usually acts as a boolean variable/parameter indicating a condition to be either true or false.
+The most common compiler optimization flags include -O1, -O2, -O3, and -Ofast.
+
+-O1:
+
+- Goal: Optimize for speed while avoiding an increase in code size.
+- Key Features: Suitable for applications with large code sizes and many branches, particularly when execution time is not dominated by code within loops.
+
+-O2:
+
+- Enables vectorization.
+- Allows inlining of intrinsics and intra-file interprocedural optimization.
+
+-O3:
+
+- Optimizations may only consistently outperform -O2 if loop and memory access transformations are effective. it can even lead to slower code.
+- Recommended for applications with loop-intensive floating-point calculations and large data sets.
+
+-Ofast:
+
+- Enables the following flags
+  - -O3
+  - -no-prec-div: enables optimizations that yield faster but slightly less precise results than full IEEE division. For example, the expression A/B is computed as A * (1/B) to enhance computation speed
+  - -fp-model fast=2:  nables more aggressive floating-point optimizations 
+
+
+https://en.wikipedia.org/wiki/Flag_(programming)
+https://caiorss.github.io/C-Cpp-Notes/compiler-flags-options.html
+https://medium.com/nerd-for-tech/compiler-optimizations-boosting-code-performance-without-doing-much-95f1182a5757
+https://www.youtube.com/watch?v=NTlcDv7W2-c

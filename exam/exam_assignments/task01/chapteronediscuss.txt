@@ -1,0 +1,14 @@
+
+Processor
+In chapter 1 the CPU is discussed in detail. But it is not the only processesing unit in modern computer systems. The GPU (graphical processing unit) is getting more and more important. As written on https://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/: "The CPU (central processing unit) has been called the brains of a PC. The GPU its soul."
+CPU are made for complexe and versatile task with a fast interaction. For example fast sequential processing of operating system tasks entered by the user. This requires not that much cores, 4-16 are todays convential numbers. On the other hand are GPUs which are made for doing a lot of similiar task parallel. Later, they are often used gaming and graphic processing. today they are used in a widely field of Big Data tasks, like machine learning, and comuputer vision processing. Because mathematically "simple" task like matrix multiplications are done very fast because of the parallel character of the GPU. And such modern fields like deep learing and computer vision processing are simplified matrix multiplications.
+Programmers have to cautions when porgramm GPUs, beacuse in CPU programming stuff like cache handling is mostly automated through compilers, but not for GPUs. Programmers have to optimize the code to gain the real and full potential from the parallel chracter of the GPU.
+
+
+1.7.2 Threads
+The parallel charcter of threads can be disturbed by: Memory Contention, Mnagemnt Overhead, Load Imbalance, Memory Bandwith Bottleneck, (and other things).
+Memory Contention: many threads need access to th same memory at the same time. Result in that threads have to wait.
+Managemnt Overhead: if a process creates a lot of threads with small tasks, so that these threads are very fast in completing these tasks, then the creation, snycronizing and over all handling can lead to more runtime than the parallelization can improve it. 
+Load Imbalance: if some threads are signidficantly faster than other threads, the fasterone have to wait for the other (particular in fork parallelism)
+Memory Bandwith Bottleneck: threads load a lot date in the memory so that other (finished) threads can not load new data because another thread needs so much memory
+

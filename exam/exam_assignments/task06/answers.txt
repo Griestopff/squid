@@ -1,0 +1,30 @@
+1. SSE
+	8 128-bit XMM registers
+	single Instruction, Multiple Data (SIMD) support
+2. AVX(2)
+	extends XMM registers to 16 256-bit YMM registers
+	AVX2 introduced gather operations and better support for integer SIMD processing
+3. AVX-512
+	extends YMM registers to 32 512-bit ZMM registers
+	support for massive vectorization with 512-bit registers
+	multiple extensions for specialized workloads (e.g., AVX-512DQ for double and quad-precision, AVX-512BW for byte and word processing)
+	
+	
+Memory aliasing occurs when two or more pointers or references in a program refer to the same memory location. If the compiler can not assume with 100% that two pointers (e.g. in a for loop) point to different locations, the compiler cannot optimize the loop efficiently. Memory aliasing also complicates vectorization because the compiler cannot safely generate instructions that process multiple data elements simultaneously if there is a risk of overlap.
+
+
+- Better Cache Utilization: accesses data sequentially and fully utilizing cache lines, larger strides may skip portions of cached data
+- Improved SIMD Performance: stride-1 is optimal for vectorized operations, it allows efficient packing and processing of data in SIMD registers
+- Higher Bandwidth: unit stride maximizes memory bandwidth by minimizing gaps in accessed data(continuous data streaming)
+
+
+1. Vectorization and SIMD Operations
+	it ensures that all elements of a field are contiguous in memory. efficient use of SIMD instructions for parallel processing.
+	
+2. Ease of Parallelism
+	parallel processing frameworks (e.g., OpenMP, CUDA) benefit from SoA as threads or blocks can operate on independent chunks of contiguous data
+	
+3. High Memory Throughput
+	contiguous memory for a field ensures fewer cache misses and maximizes bandwidth usage
+2. Cache Efficiency
+	accessing a single field in SoA accesses data sequentially, optimizing cache utilization. With AoS, unnecessary data is fetched into the cache

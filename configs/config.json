@@ -1,7 +1,7 @@
 {
-  "image_path": "../input/bacteria.tif",
+  "image_path": "../input/convolved.tif",
   "info": true,
-  "showExampleLayers": true,
+  "showExampleLayers": false,
   "time": true,
   "seperate": false,
 
@@ -14,7 +14,7 @@
   "savePsf": true,
   "psfx": 20,
   "psfy": 20,
-  "psfz": 46,
+  "psfz": 30,
   "sigmax": 5,
   "sigmay": 5,
   "sigmaz": 5,

@@ -1,0 +1,57 @@
+Latency and Throughput
+
+Latency is the total time (measured in clock cycles) it takes for an intrinsic function to produce its output after the input is provided. This includes all stages of the instruction pipeline like fetching, decoding, executing, and writing the result. -> It tells the time to complete a single instance of the intrinsic.
+
+Throughput is the rate at which an intrinsic can be executed, typically measured as the number of clock cycles between the initiation of consecutive executions of the intrinsic. It is related to how many instructions can be issued in parallel by the processor's execution units. -> It tells the rate at which multiple, independent instances of the intrinsic can be executed.
+-------------------------------------------------------------------------------------------------------------------------
+
+Slide Report
+Important topic: Compiler dependency in loop unrolling highlights how different compilers handle this optimization differently, which often leads to variations in performance. 
+
+Behavior Across Compilers:
+- Clang typically emphasizes aggressive loop unrolling and vectorization when flags like -O3 or -funroll-loops are used. Its unrolling behavior integrates well with LLVM’s Intermediate Representation (IR), focusing on maximizing instruction-level parallelism (ILP).
+- GCC also performs loop unrolling, but its results depend on heuristics, such as the loop's size or the impact on code size. At higher optimization levels (e.g., -O3), GCC may unroll loops more conservatively to avoid excessive instruction cache use or increased compile time.
+- Intel Compiler (ICC) often unrolls loops to exploit architecture-specific features like AVX registers. However, its conservative decision-making can sometimes result in slower unrolled code compared to Clang​
+    
+Factors influencing compiler decisions:
+- Loop Size and Complexity: Small loops are often aggressively unrolled, while larger loops may not be unrolled due to the risk of bloating the instruction cache.
+- Register pressure: Unrolling increases register usage, and compilers manage this differently based on available registers and target architecture.
+- Instruction-Level parallelism: Loop unrolling interacts with other optimizations like vectorization. Clang for example can exploit vectorization better when unrolling, whereas GCC may miss these opportunities in specific cases​
+
+Practical Insights:
+- On Clang, loop unrolling combined with vectorization can result in substantial performance boosts, especially for compute-intensive loops. This is evident when running benchmarks, where Clang may outperform GCC and ICC on small loops.
+- GCC shows mixed performance depending on the loop structure. In certain cases, GCC at high optimization levels (-O3) might fail to outperform simpler optimizations due to conservative unrolling strategies.
+- Intel Compiler often produces code tailored to specific Intel CPUs, leveraging architecture-specific optimizations like AVX512. The added complexity sometimes leads to suboptimal results compared to Clang or GCC​
+
+Sources:
+https://community.intel.com/t5/Blogs/Tech-Innovation/Cloud/Optimizing-Redis-Default-Compiler-Flags/post/1456604
+https://colfaxresearch.com/compiler-comparison/
+https://johnnysswlab.com/loop-optimizations-interpreting-the-compiler-optimization-report/
+https://johnnysswlab.com/loop-optimizations-how-does-the-compiler-do-it/
+
+------------------------------------------------------------------------------------------------------------------------
+Paper discussion:
+
+Hashtable data structure:
+Hash tables are nice because they let you find, insert, or delete data really quickly. They work by using a "hash function" to turn a key (like a name or ID) into an index in an array, where the value is stored. This means you don't have to search through the whole list to find something—just jump straight to where it should be. 
+
+Hash tables are fast, achieving O(1) time complexity for lookups, insertions, and deletions in the average case because they use a clever combination of array indexing and hash functions. A hash function takes an input (the key) and converts it into a fixed-size integer, which acts as an index into an underlying array. This direct mapping means you can jump straight to the correct location in memory without scanning through data, which eliminates the need for linear or binary searches like other data structures.
+
+The key reason for this speed is that accessing a specific index in an array is inherently an O(1) operation due to how memory is structured in computers. If the hash function distributes keys uniformly and the table is appropriately sized, collisions (when two keys map to the same index) are rare. Even when collisions occur, modern techniques like chaining (storing collided keys in linked lists or secondary arrays) or open addressing (probing nearby slots for empty spaces) help maintain efficient access. However, the speed can degrade to O(n) in the worst case, such as when many collisions occur due to a poor hash function or an overfilled table, but resizing and good hash functions mitigate these issues.
+
+Other data structures, like arrays, linked lists, and trees, are slower than hash tables for some operations because they don’t have the same ability to jump directly to the desired data. While arrays do allow direct access via an index (e.g., array[index]), this only works when you know the index ahead of time. If you need to search for an item in an array based on its value, you have to scan through the entire array, which takes O(n) time for an unsorted array or O(log n) for a sorted one with binary search.
+
+Linked lists are even slower because accessing an element involves traversing the list node by node, taking O(n) time in the worst case. This is because linked lists don't allow direct indexing like arrays do—each node contains a pointer to the next one, so you must follow these pointers sequentially to find the desired element.
+
+Trees, like binary search trees, improve on this by organizing data hierarchically, which allows faster searching, insertion, and deletion in O(log n) time for balanced trees. However, they still require traversing levels of the tree to find a specific item, which is slower than the O(1) access in hash tables.
+
+Hash tables outperform these structures because their direct access relies on the hash function to compute an index instantly, avoiding the need for iteration or traversal. This makes them ideal for applications where quick lookups are essential. However, hash tables are less suitable in cases where data must be sorted, as they don't inherently maintain order like arrays or trees do.
+
+There are some challenges... If two keys "collide" (meaning the hash function gives them the same index), the table has to handle that using methods like chaining (storing multiple items in a list at the same index) or open addressing (finding a different spot for the new item). Even with these issues, hash tables are still incredibly efficient for things like dictionaries, caching, or any situation where you need fast lookups. Their speed and flexibility are what make them such a popular choice in programming.
+
+
+
+Bucket-Based-Comparison:
+Bucket-based comparison is a technique used to group data into smaller subsets, called buckets, to make processing faster and more efficient. Instead of comparing every piece of data to all the others, which can take a lot of time for large datasets, bucket-based comparison organizes data so only items in the same bucket need to be compared. This is often done using a function, like a hash function, or by dividing the data into ranges based on its values. For example, in a hash table, the hash function assigns data to specific buckets, and you only search the bucket where the data should be.
+
+This method is especially useful for reducing complexity in big datasets because it limits the number of operations. It’s common in sorting algorithms like bucket sort, where numbers are grouped into buckets and then sorted within each group. It’s also used in clustering, where data points are grouped into similar buckets for analysis. The approach is fast because it breaks down a large problem into smaller, easier parts, and it’s easy to parallelize since each bucket can be processed separately. However, the effectiveness depends on how evenly the data is distributed among buckets. Too many items in one bucket can slow things down, so good bucket design is important.
