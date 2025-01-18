@@ -26,6 +26,13 @@ SQUID is a compact high-performance 3D image deconvolution tool designed for pro
 ### Compilation
 
 To compile the project, make sure all dependencies are installed and linked correctly. Then, use your preferred build system or compiler.
+```bash
+mkdir build
+cd build
+
+cmake ..
+make
+```
 
 ### Running the Tool
 
