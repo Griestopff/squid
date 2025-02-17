@@ -39,7 +39,7 @@ make
 #### Basic Usage
 
 ```
-./SQUID -i <input_image_path> -p <psf_path> [OPTIONS]
+./squid -i <input_image_path> -p <psf_path> [OPTIONS]
 ```
 
 #### Command-Line Options
@@ -95,7 +95,7 @@ Configuration can also be loaded from a JSON file, with parameters specified as 
 
 To use a configuration file, specify it with the `-c` or `--config` option. Command-line arguments override any settings specified in the configuration file.
 ```
-./SQUID -c <config_file_path> [OPTIONS]
+./squid -c <config_file_path> [OPTIONS]
 ```
 
 ### Example Command
@@ -103,7 +103,7 @@ To use a configuration file, specify it with the `-c` or `--config` option. Comm
 To deconvolve an image with a synthetic Gaussian PSF and display timing information:
 
 ```bash
-./SQUID -i example_image.tif -p gauss -a rl --psfx 30 --psfy 30 --psfz 50 --time --info
+./squid -i example_image.tif -p gauss -a rl --psfx 30 --psfy 30 --psfz 50 --time --info
 ```
 
 ## Output
