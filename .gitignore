@@ -1,6 +1,7 @@
 result/*
 build/*
 cmake-build-debug/*
+cmake-build-release/*
 input/*
 
 uml.puml
@@ -11,7 +12,6 @@ uml3.puml
 !input/
 !result/
 !build/
-!cmake-build-debug/
 
 # Erlaube eine .gitignore-Datei im Verzeichnis input (optional, falls du .gitignore im Verzeichnis haben möchtest)
 !input/.gitkeep
